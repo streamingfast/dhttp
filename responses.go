@@ -25,6 +25,17 @@ func WriteText(ctx context.Context, w http.ResponseWriter, content string) {
 	}
 }
 
+func WriteTextf(ctx context.Context, w http.ResponseWriter, format string, arguments ...interface{}) {
+	ctx, span := dtracing.StartSpan(ctx, "write text formatted response")
+	defer span.End()
+
+	w.Header().Set("Content-Type", "text/plain")
+
+	if _, err := w.Write([]byte(fmt.Sprintf(format, arguments...))); err != nil {
+		logWriteResponseError(ctx, "failed writing text response", err)
+	}
+}
+
 func WriteJSON(ctx context.Context, w http.ResponseWriter, v interface{}) {
 	ctx, span := dtracing.StartSpan(ctx, "write JSON response", "type", fmt.Sprintf("%T", v))
 	defer span.End()
