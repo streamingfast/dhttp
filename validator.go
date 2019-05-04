@@ -31,6 +31,13 @@ func NewRequestValidator(rules validator.Rules, options ...validator.Option) *Re
 	}
 }
 
+func NewJSONRequestValidator(rules validator.Rules, options ...validator.Option) *RequestValidator {
+	return &RequestValidator{
+		rules:   rules,
+		options: append([]validator.Option{validator.TagIdentifierOption("json")}, options...),
+	}
+}
+
 func (v *RequestValidator) validate(r *http.Request, data interface{}) url.Values {
 	return validator.ValidateStruct(data, v.rules, v.options...)
 }

@@ -2,13 +2,14 @@ package dhttp
 
 import (
 	"context"
-	"errors"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/url"
 	"reflect"
 	"time"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/gorilla/mux"
 
 	"github.com/eoscanada/logging"
@@ -43,14 +44,15 @@ func ExtractJSONRequest(ctx context.Context, r *http.Request, request interface{
 		return derr.MissingBodyError(ctx)
 	}
 
-	// FIXME: We probably will want to handle ourself the JSON body reading
-	//        so we will be able to handle errors more gracefully.
+	err := json.NewDecoder(r.Body).Decode(request)
+	if err != nil {
+		return derr.InvalidJSONError(ctx, err)
+	}
+
+	spew.Dump(request)
+
 	requestErrors := validator.validate(r, request)
 	if len(requestErrors) > 0 {
-		if jsonErrors, ok := requestErrors["_error"]; ok {
-			return derr.InvalidJSONError(ctx, errors.New(jsonErrors[0]))
-		}
-
 		return derr.RequestValidationError(ctx, requestErrors)
 	}
 
