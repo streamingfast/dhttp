@@ -19,7 +19,6 @@ func WriteText(ctx context.Context, w http.ResponseWriter, content string) {
 	defer span.End()
 
 	w.Header().Set("Content-Type", "text/plain")
-
 	if _, err := w.Write([]byte(content)); err != nil {
 		logWriteResponseError(ctx, "failed writing text response", err)
 	}
@@ -30,8 +29,7 @@ func WriteTextf(ctx context.Context, w http.ResponseWriter, format string, argum
 	defer span.End()
 
 	w.Header().Set("Content-Type", "text/plain")
-
-	if _, err := w.Write([]byte(fmt.Sprintf(format, arguments...))); err != nil {
+	if _, err := fmt.Fprintf(w, format, arguments...); err != nil {
 		logWriteResponseError(ctx, "failed writing text response", err)
 	}
 }
@@ -43,6 +41,16 @@ func WriteJSON(ctx context.Context, w http.ResponseWriter, v interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(v); err != nil {
 		logWriteResponseError(ctx, "failed encoding JSON response", err)
+	}
+}
+
+func WriteJSONString(ctx context.Context, w http.ResponseWriter, json string) {
+	ctx, span := dtracing.StartSpan(ctx, "write JSON string response")
+	defer span.End()
+
+	w.Header().Set("Content-Type", "application/json")
+	if _, err := w.Write([]byte(json)); err != nil {
+		logWriteResponseError(ctx, "failed writing text response", err)
 	}
 }
 
