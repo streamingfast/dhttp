@@ -19,16 +19,17 @@ require (
 	github.com/eoscanada/bstream v1.1.6
 	github.com/eoscanada/derr v0.3.0
 	github.com/eoscanada/dtracing v0.3.1
-	github.com/eoscanada/eos-go v0.8.5
+	github.com/eoscanada/eos-go v0.8.10-0.20190329223853-84b552870f2a
 	github.com/eoscanada/eosdb v0.0.2
 	github.com/eoscanada/fluxdb-client v0.2.0
 	github.com/eoscanada/logging v0.1.0
 	github.com/eoscanada/opaque v1.0.0
 	github.com/eoscanada/shutter v1.1.1
-	github.com/eoscanada/validator v0.4.0
+	github.com/eoscanada/validator v0.4.1-0.20190807042112-8fbbe313c8e8
 	github.com/go-logfmt/logfmt v0.4.0 // indirect
 	github.com/gogo/protobuf v1.2.0 // indirect
 	github.com/golang/lint v0.0.0-20181217174547-8f45f776aaf1 // indirect
+	github.com/google/go-jsonnet v0.13.0 // indirect
 	github.com/google/pprof v0.0.0-20190109223431-e84dfd68c163 // indirect
 	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e // indirect
@@ -78,7 +79,6 @@ require (
 	golang.org/x/net v0.0.0-20190206173232-65e2d4e15006 // indirect
 	golang.org/x/oauth2 v0.0.0-20190130055435-99b60b757ec1
 	golang.org/x/perf v0.0.0-20190124201629-844a5f5b46f4 // indirect
-	golang.org/x/sys v0.0.0-20190204203706-41f3e6584952 // indirect
 	golang.org/x/tools v0.0.0-20190206221403-44bcb96178d3 // indirect
 	google.golang.org/api v0.1.0
 	gopkg.in/olivere/elastic.v3 v3.0.74

@@ -85,6 +85,8 @@ github.com/eoscanada/dtracing v0.3.1 h1:I+xX0UmqmQi9LRyhNyh9lJVJ6sHIuKax0h4NIepN
 github.com/eoscanada/dtracing v0.3.1/go.mod h1:0/tp/EgJSewdXryeoUSYYy2BXOKc+u5b5Rt8NkHhkw4=
 github.com/eoscanada/eos-go v0.8.5 h1:6A+hf3pEti8hKqkU/yBlj0Zn7JwOSGFhrcYW5h1rRkA=
 github.com/eoscanada/eos-go v0.8.5/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
+github.com/eoscanada/eos-go v0.8.10-0.20190329223853-84b552870f2a h1:uYe5E9muJw/qayXnuvDbCC5mcteSarfZy8yKqZ2jd1I=
+github.com/eoscanada/eos-go v0.8.10-0.20190329223853-84b552870f2a/go.mod h1:RKrm2XzZEZWxSMTRqH5QOyJ1fb/qKEjs2ix1aQl0sk4=
 github.com/eoscanada/eosdb v0.0.0-20190122133556-3c70199556d9 h1:34ijMAmmTVs9MpxY4QEE/9R8+Kfo6oC5JtGTLUH8LRE=
 github.com/eoscanada/eosdb v0.0.0-20190122133556-3c70199556d9/go.mod h1:aSjyY/80DAil1WUIfTDbIux99mNxwotMGWpcLhb+jVI=
 github.com/eoscanada/eosdb v0.0.2-0.20190122133556-3c70199556d9 h1:ThzX2PPT+Z3obH/n92pd0x958P7Ano3mirLFv8SgxtI=
@@ -109,6 +111,9 @@ github.com/eoscanada/validator v0.3.0 h1:Z1Zlk3NzVKZHyrxHPhELbMG6fBq1MELNDonq51A
 github.com/eoscanada/validator v0.3.0/go.mod h1:z6NcJ6OIa/o/t3kgBwaTO0Ng+JOcwmrGcfxE6WV+gqY=
 github.com/eoscanada/validator v0.4.0 h1:WFd+VwP1JjT/bb+Aw2dhy+3lezqavsObBJa2FDhByAE=
 github.com/eoscanada/validator v0.4.0/go.mod h1:IIuZS5CghzdnkaWpOdaxCmYex7TqAc02R/QMdP5PrdM=
+github.com/eoscanada/validator v0.4.1-0.20190807042112-8fbbe313c8e8 h1:RGswFHK3tO+8T9QtdzftTmyuQWNt5MsajlhXJYSeXMU=
+github.com/eoscanada/validator v0.4.1-0.20190807042112-8fbbe313c8e8/go.mod h1:7KvxvscyqNmJlO8zdbdGVRB94NEa9M6YUsRS1OohRtE=
+github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568/go.mod h1:xEzjJPgXI435gkrCt3MPfRiAkVrwSbHsst4LCFVfpJc=
 github.com/fsnotify/fsnotify v1.4.7 h1:IXs+QLmnXW2CcXuY+8Mzv/fWEsPGWxqefPtCP5CnV9I=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
@@ -139,6 +144,8 @@ github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c/go.mod h1:lNA+9X1NB3Z
 github.com/google/go-cmp v0.2.0 h1:+dTQ8DZQJz0Mb/HjFlkptS1FeQ4cWSnN941F8aEG4SQ=
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/google/go-github v17.0.0+incompatible/go.mod h1:zLgOLi98H3fifZn+44m+umXrS52loVEgC2AApnigrVQ=
+github.com/google/go-jsonnet v0.13.0 h1:Ul0FtJiQl705JIyGKaBZug/W2LBY5p0xwY08Q69eOAg=
+github.com/google/go-jsonnet v0.13.0/go.mod h1:gNwctc8xrpXNs749bjRLO58rjIBVrWz+pgsRoOCh5Vs=
 github.com/google/go-querystring v1.0.0/go.mod h1:odCYkC5MyYFN7vkCjXpyrEuKhc/BUO6wN/zVPAxq5ck=
 github.com/google/martian v2.1.0+incompatible h1:/CP5g8u/VJHijgedC/Legn3BAbAaWPgecwXBIDzw5no=
 github.com/google/martian v2.1.0+incompatible/go.mod h1:9I4somxYTbIHy5NJKHRl3wXiIaQGbYVAs8BPL6v8lEs=
@@ -189,6 +196,9 @@ github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/pty v1.1.3/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0 h1:45sCR5RtlFHMR4UwH9sdQ5TC8v0qDQCHnXt+kaKSTVE=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/mattn/go-colorable v0.1.1/go.mod h1:FuOcm+DKB9mbwrcAfNl7/TZVBZ6rcnceauSikq3lYCQ=
+github.com/mattn/go-isatty v0.0.5/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hdxcsrc5s=
+github.com/mattn/go-isatty v0.0.7/go.mod h1:Iq45c/XA43vh69/j3iqttzPXn0bhXyGjM0Hdxcsrc5s=
 github.com/matttproud/golang_protobuf_extensions v1.0.1 h1:4hp9jkHxhMHkqkrB3Ix0jegS5sx/RkqARlsWZ6pIwiU=
 github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod h1:D8He9yQNgCq6Z5Ld7szi9bcBfOoFv/3dc6xSMkL2PC0=
 github.com/microcosm-cc/bluemonday v1.0.1/go.mod h1:hsXNsILzKxV+sX77C5b8FSuKF00vh2OMYv+xgHpAMF4=
@@ -240,6 +250,7 @@ github.com/prometheus/procfs v0.0.0-20190203183350-488faf799f86/go.mod h1:c3At6R
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/russross/blackfriday v1.5.2/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
 github.com/russross/blackfriday v2.0.0+incompatible/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
+github.com/sergi/go-diff v1.0.0 h1:Kpca3qRNrduNnOQeazBd0ysaKrUJiIuISHxogkT9RPQ=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=
 github.com/shurcooL/component v0.0.0-20170202220835-f88ec8f54cc4/go.mod h1:XhFIlyj5a1fBNx5aJTbKoIq0mNaPvOagO+HjB3EtxrY=
 github.com/shurcooL/events v0.0.0-20181021180414-410e4ca65f48/go.mod h1:5u70Mqkb5O5cxEA8nxTsgrgLehJeAw6Oc4Ab1c/P1HM=
@@ -376,6 +387,7 @@ golang.org/x/sys v0.0.0-20181122145206-62eef0e2fa9b/go.mod h1:STP8DvDyc/dI5b8T5h
 golang.org/x/sys v0.0.0-20181218192612-074acd46bca6/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20190204203706-41f3e6584952 h1:FDfvYgoVsA7TTZSbgiqjAbfPbK47CNHdWl3h/PJtii0=
 golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
+golang.org/x/sys v0.0.0-20190222072716-a9d3bda3a223/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2 h1:z99zHgr7hKfrUcX/KsoJk5FJfjTceCKIp96+biqP4To=
