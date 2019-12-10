@@ -9,12 +9,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/davecgh/go-spew/spew"
-	"github.com/gorilla/mux"
-
-	"github.com/eoscanada/logging"
-
 	"github.com/eoscanada/derr"
+	"github.com/eoscanada/logging"
+	"github.com/gorilla/mux"
 	"github.com/gorilla/schema"
 	"go.uber.org/zap"
 )
@@ -48,8 +45,6 @@ func ExtractJSONRequest(ctx context.Context, r *http.Request, request interface{
 	if err != nil {
 		return derr.InvalidJSONError(ctx, err)
 	}
-
-	spew.Dump(request)
 
 	requestErrors := validator.validate(r, request)
 	if len(requestErrors) > 0 {
