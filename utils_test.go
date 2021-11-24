@@ -14,11 +14,13 @@ func TestRealIP(t *testing.T) {
 	tests := []struct {
 		name     string
 		header   http.Header
+		modifier func(r *http.Request)
 		expected string
 	}{
 		{
 			"no x-forward-for header",
 			http.Header{},
+			nil,
 			"192.0.2.1",
 		},
 
@@ -26,6 +28,7 @@ func TestRealIP(t *testing.T) {
 			"x-forward-for header, 1 IP", http.Header{
 				"X-Forwarded-For": []string{"1.1.1.1"},
 			},
+			nil,
 			"192.0.2.1",
 		},
 
@@ -33,6 +36,7 @@ func TestRealIP(t *testing.T) {
 			"x-forward-for header, 2 IP", http.Header{
 				"X-Forwarded-For": []string{"1.1.1.1,2.2.2.2"},
 			},
+			nil,
 			"1.1.1.1",
 		},
 
@@ -40,6 +44,7 @@ func TestRealIP(t *testing.T) {
 			"x-forward-for header, 3 IP", http.Header{
 				"X-Forwarded-For": []string{"1.1.1.1,2.2.2.2,3.3.3.3"},
 			},
+			nil,
 			"2.2.2.2",
 		},
 
@@ -47,7 +52,17 @@ func TestRealIP(t *testing.T) {
 			"x-forward-for header, 5 IP", http.Header{
 				"X-Forwarded-For": []string{"1.1.1.1,2.2.2.2,3.3.3.3,4.4.4.4"},
 			},
+			nil,
 			"3.3.3.3",
+		},
+
+		{
+			"no x-forward-for, no remote address somehow",
+			nil,
+			func(r *http.Request) {
+				r.RemoteAddr = ""
+			},
+			"",
 		},
 	}
 
@@ -55,9 +70,11 @@ func TestRealIP(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			request := httptest.NewRequest("GET", "/", strings.NewReader("test"))
 			request.Header = test.header
-			actual := RealIP(request)
+			if test.modifier != nil {
+				test.modifier(request)
+			}
 
-			assert.Equal(t, test.expected, actual)
+			assert.Equal(t, test.expected, RealIP(request))
 		})
 	}
 }

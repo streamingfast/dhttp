@@ -42,7 +42,7 @@ func RealIP(r *http.Request) string {
 		return portSuffixRegex.ReplaceAllString(r.RemoteAddr, "")
 	}
 
-	return "0.0.0.0"
+	return ""
 }
 
 func FowardResponse(ctx context.Context, w http.ResponseWriter, response *http.Response) {
