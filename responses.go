@@ -10,9 +10,9 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/eoscanada/derr"
-	"github.com/eoscanada/dtracing"
-	"github.com/eoscanada/logging"
+	"github.com/streamingfast/derr"
+	"github.com/streamingfast/dtracing"
+	"github.com/streamingfast/logging"
 )
 
 func WriteText(ctx context.Context, w http.ResponseWriter, content string) {

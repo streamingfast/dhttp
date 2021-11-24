@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/eoscanada/derr"
+	"github.com/streamingfast/derr"
 )
 
 func FowardResponse(ctx context.Context, w http.ResponseWriter, response *http.Response) {

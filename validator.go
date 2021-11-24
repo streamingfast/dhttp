@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/eoscanada/validator"
+	"github.com/streamingfast/validator"
 )
 
 type Validator interface {

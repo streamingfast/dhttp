@@ -9,10 +9,10 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/eoscanada/derr"
-	"github.com/eoscanada/logging"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/schema"
+	"github.com/streamingfast/derr"
+	"github.com/streamingfast/logging"
 	"go.uber.org/zap"
 )
 

@@ -6,10 +6,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/streamingfast/derr"
+	"github.com/streamingfast/validator"
 	"github.com/stretchr/testify/assert"
-
-	"github.com/eoscanada/derr"
-	"github.com/eoscanada/validator"
 )
 
 func Test_ExtractRequest(t *testing.T) {
