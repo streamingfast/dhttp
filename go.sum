@@ -112,6 +112,8 @@ github.com/streamingfast/dtracing v0.0.0-20210811175635-d55665d3622a/go.mod h1:b
 github.com/streamingfast/logging v0.0.0-20210811175431-f3b44b61606a/go.mod h1:4GdqELhZOXj4xwc4IaBmzofzdErGynnaSzuzxy0ZIBo=
 github.com/streamingfast/logging v0.0.0-20211123200936-85caf619f41c h1:kTmZIjO/Hvdrg10v+LwRJ/zFChIgGBEavV9Xp1IRifw=
 github.com/streamingfast/logging v0.0.0-20211123200936-85caf619f41c/go.mod h1:4GdqELhZOXj4xwc4IaBmzofzdErGynnaSzuzxy0ZIBo=
+github.com/streamingfast/logging v0.0.0-20211124045907-885d22397837 h1:+tZ4qgAYacU40hpYN6tY8z5yc5UBVJna4HSUe4ls7Qw=
+github.com/streamingfast/logging v0.0.0-20211124045907-885d22397837/go.mod h1:4GdqELhZOXj4xwc4IaBmzofzdErGynnaSzuzxy0ZIBo=
 github.com/streamingfast/opaque v0.0.0-20210811180740-0c01d37ea308 h1:xlWSfi1BoPfsHtPb0VEHGUcAdBF208LUiFCwfaVPfLA=
 github.com/streamingfast/opaque v0.0.0-20210811180740-0c01d37ea308/go.mod h1:K1p8Bj/wG34KJvYzPUqtzpndffmpkrVY11u2hkyxCWQ=
 github.com/streamingfast/validator v0.0.0-20210812013448-b9da5752ce14 h1:/HCMj7plThWPFXsj/O8f+zDIAtXciwP4rK6tb+9UvPQ=

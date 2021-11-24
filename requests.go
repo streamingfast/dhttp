@@ -72,7 +72,7 @@ func sanitizeSchemaError(ctx context.Context, err error) error {
 	switch v := err.(type) {
 	case schema.MultiError:
 		for field, childErr := range v {
-			errors[field] = []string{schemErrorToString(ctx, zlogger, childErr)}
+			errors[field] = []string{schemaErrorToString(zlogger, childErr)}
 		}
 
 	default:
@@ -82,7 +82,7 @@ func sanitizeSchemaError(ctx context.Context, err error) error {
 	return derr.RequestValidationError(ctx, errors)
 }
 
-func schemErrorToString(ctx context.Context, zlogger *zap.Logger, err error) string {
+func schemaErrorToString(zlogger *zap.Logger, err error) string {
 	if v, ok := err.(schema.ConversionError); ok {
 		if v.Err != nil {
 			zlogger.Debug("Conversion underlying error", zap.Error(v.Err))
@@ -92,7 +92,7 @@ func schemErrorToString(ctx context.Context, zlogger *zap.Logger, err error) str
 	}
 
 	zlogger.Info("Unknown conversion error", zap.Error(err))
-	return "Unknow conversion error, invalid value"
+	return "Unknown conversion error, invalid value"
 }
 
 func stringToTimeDuration(input string) reflect.Value {

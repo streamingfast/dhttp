@@ -5,15 +5,12 @@ import (
 	"strings"
 
 	stackdriverPropagation "contrib.go.opencensus.io/exporter/stackdriver/propagation"
-
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 	"github.com/streamingfast/logging"
 	"go.opencensus.io/plugin/ochttp"
 	"go.opencensus.io/trace"
-
 	"go.uber.org/zap"
-
-	"github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
 )
 
 func AddOpenCensusMiddleware(next http.Handler) http.Handler {

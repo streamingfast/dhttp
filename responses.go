@@ -7,12 +7,11 @@ import (
 	"html/template"
 	"net/http"
 
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
-
 	"github.com/streamingfast/derr"
 	"github.com/streamingfast/dtracing"
 	"github.com/streamingfast/logging"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 func WriteText(ctx context.Context, w http.ResponseWriter, content string) {

@@ -3,19 +3,15 @@ package dhttp
 import (
 	"context"
 	"encoding/hex"
-	"os"
 
+	"github.com/streamingfast/logging"
 	"go.opencensus.io/trace"
-
-	"go.uber.org/zap"
 )
 
 var defaultTraceID = "00000000000000000000000000000000"
 
 func init() {
-	if os.Getenv("DEBUG") != "" {
-		zlog, _ = zap.NewDevelopment()
-	}
+	logging.TestingOverride()
 }
 
 func newTestContext(parentCtx context.Context) context.Context {
