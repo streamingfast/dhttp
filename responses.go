@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"io"
 	"net/http"
 
 	"github.com/streamingfast/derr"
@@ -62,6 +63,15 @@ func WriteHTML(ctx context.Context, w http.ResponseWriter, htmlTpl *template.Tem
 
 	if err := htmlTpl.Execute(w, data); err != nil {
 		logWriteResponseError(ctx, "failed writing HTML response", err)
+	}
+}
+
+func WriteFromReader(ctx context.Context, w http.ResponseWriter, reader io.Reader) {
+	ctx, span := dtracing.StartSpan(ctx, "write from reader response")
+	defer span.End()
+
+	if _, err := io.Copy(w, reader); err != nil {
+		logWriteResponseError(ctx, "unable to copy to client", err)
 	}
 }
 
