@@ -16,7 +16,7 @@ import (
 var zlog = zap.NewNop()
 var _ = logging.ApplicationLogger("dhttp", "github.com/streamingfast/dhttp_test", &zlog)
 
-func Example_JSONServer() {
+func _Example_JSONServer() {
 	router := mux.NewRouter()
 
 	// Test with 'curl http://localhost:8080/healthz'

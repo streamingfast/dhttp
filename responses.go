@@ -66,6 +66,15 @@ func WriteHTML(ctx context.Context, w http.ResponseWriter, htmlTpl *template.Tem
 	}
 }
 
+func WriteFromBytes(ctx context.Context, w http.ResponseWriter, bytes []byte) {
+	ctx, span := dtracing.StartSpan(ctx, "write from bytes response")
+	defer span.End()
+
+	if _, err := w.Write(bytes); err != nil {
+		logWriteResponseError(ctx, "unable to write to client", err)
+	}
+}
+
 func WriteFromReader(ctx context.Context, w http.ResponseWriter, reader io.Reader) {
 	ctx, span := dtracing.StartSpan(ctx, "write from reader response")
 	defer span.End()
