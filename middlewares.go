@@ -21,11 +21,7 @@ func AddOpenCensusMiddleware(next http.Handler) http.Handler {
 }
 
 func AddLoggerMiddleware(next http.Handler) http.Handler {
-	return &logging.Handler{
-		Next:        next,
-		Propagation: &stackdriverPropagation.HTTPFormat{},
-		RootLogger:  zlog,
-	}
+	return logging.NewAddTraceIDMiddleware(next, zlog, &stackdriverPropagation.HTTPFormat{})
 }
 
 func AddTraceMiddleware(next http.Handler) http.Handler {

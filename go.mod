@@ -7,7 +7,7 @@ require (
 	github.com/gorilla/schema v1.0.2
 	github.com/streamingfast/derr v0.0.0-20210811180100-9138d738bcec
 	github.com/streamingfast/dtracing v0.0.0-20210811175635-d55665d3622a
-	github.com/streamingfast/logging v0.0.0-20211124045907-885d22397837
+	github.com/streamingfast/logging v0.0.0-20220214192053-ff3c833da75c
 	github.com/streamingfast/validator v0.0.0-20210812013448-b9da5752ce14
 	github.com/stretchr/testify v1.4.0
 	go.opencensus.io v0.22.1

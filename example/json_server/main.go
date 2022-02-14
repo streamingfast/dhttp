@@ -1,4 +1,4 @@
-package dhttp_test
+package main
 
 import (
 	"fmt"
@@ -13,10 +13,11 @@ import (
 	"go.uber.org/zap"
 )
 
-var zlog = zap.NewNop()
-var _ = logging.ApplicationLogger("dhttp", "github.com/streamingfast/dhttp_test", &zlog)
+var zlog, _ = logging.ApplicationLogger("example", "github.com/streamingfast/dhttp/example/json_server",
+	logging.WithSwitcherServerAutoStart(),
+)
 
-func _Example_JSONServer() {
+func main() {
 	router := mux.NewRouter()
 
 	// Test with 'curl http://localhost:8080/healthz'
@@ -48,6 +49,10 @@ func _Example_JSONServer() {
 
 	go func() {
 		zlog.Info("serving HTTP", zap.String("listen_addr", "0.0.0.0:8080"))
+		zlog.Info("endpoints")
+		zlog.Info(" curl http://localhost:8080/healthz")
+		zlog.Info(" curl http://localhost:8080/api/v1/todos?user=john")
+		zlog.Info(` curl -X PUT -d '{"id": "abc"}' http://localhost:8080/api/v1/todos`)
 
 		// FIXME: Drain connection when app is terminating as a finalizer step
 		server.ListenAndServe()
@@ -56,9 +61,6 @@ func _Example_JSONServer() {
 	// Wait until Ctrc-C is hit, in your own application, it should be tied to lifecycle
 	// like a shutter.Shutter.
 	<-derr.SetupSignalHandler(500 * time.Millisecond)
-
-	// Output: Completed
-	fmt.Println("Completed")
 }
 
 // Would normally go in `get_health.go` file
@@ -78,7 +80,7 @@ type GetTodosParams struct {
 }
 
 type GetTodosResponse struct {
-	IDs []string
+	IDs []string `json:"ids"`
 }
 
 func getTodos(r *http.Request) (out interface{}, err error) {
@@ -107,6 +109,7 @@ type TodosResponse struct {
 
 func putTodo(r *http.Request) (out interface{}, err error) {
 	ctx := r.Context()
+	logger := logging.Logger(ctx, zlog)
 
 	request := PutTodoRequest{}
 	err = dhttp.ExtractJSONRequest(ctx, r, &request, dhttp.NewJSONRequestValidator(validator.Rules{
@@ -116,5 +119,9 @@ func putTodo(r *http.Request) (out interface{}, err error) {
 		return nil, err
 	}
 
-	return nil, nil
+	// You got here a specific logger for this request, contains a TraceID as well as any fields
+	// you have added.
+	logger.Debug("adding new todo in backend")
+
+	return &TodosResponse{IDs: []string{request.ID}}, nil
 }
