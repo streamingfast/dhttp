@@ -25,10 +25,10 @@ func main() {
 
 	apiRouter := router.PathPrefix("/api/v1").Subrouter()
 	apiRouter.Use(dhttp.NewCORSMiddleware(".*"))
-	apiRouter.Use(dhttp.AddOpenCensusMiddleware)
-	apiRouter.Use(dhttp.AddLoggerMiddleware)
-	apiRouter.Use(dhttp.LogMiddleware)
-	apiRouter.Use(dhttp.AddTraceMiddleware)
+	apiRouter.Use(dhttp.NewOpenCensusMiddleware())
+	apiRouter.Use(dhttp.NewAddLoggerToContextMiddleware(zlog))
+	apiRouter.Use(dhttp.NewLogRequestMiddleware(zlog))
+	apiRouter.Use(dhttp.NewAddTraceIDHeaderMiddleware(zlog))
 
 	// Test with 'curl http://localhost:8080/api/v1/todos?user=john'
 	apiRouter.Methods("GET").Path("/todos").Handler(dhttp.JSONHandler(getTodos))
