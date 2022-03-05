@@ -5,6 +5,7 @@ require (
 	github.com/gorilla/handlers v0.0.0-20181012153334-350d97a79266
 	github.com/gorilla/mux v1.7.0
 	github.com/gorilla/schema v1.0.2
+	github.com/iancoleman/strcase v0.2.0
 	github.com/streamingfast/derr v0.0.0-20220301163149-de09cb18fc70
 	github.com/streamingfast/dtracing v0.0.0-20220305214756-b5c0e8699839
 	github.com/streamingfast/logging v0.0.0-20220304214715-bc750a74b424
