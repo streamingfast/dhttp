@@ -7,6 +7,7 @@ import (
 	stackdriverPropagation "contrib.go.opencensus.io/exporter/stackdriver/propagation"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/streamingfast/dtracing"
 	"github.com/streamingfast/logging"
 	"go.opencensus.io/plugin/ochttp"
 	"go.opencensus.io/trace"
@@ -35,7 +36,7 @@ var AddOpenCensusMiddleware = NewOpenCensusMiddleware()
 //
 func NewAddLoggerToContextMiddleware(logger *zap.Logger) mux.MiddlewareFunc {
 	return func(next http.Handler) http.Handler {
-		return logging.NewAddTraceIDMiddleware(next, logger, &stackdriverPropagation.HTTPFormat{})
+		return dtracing.NewAddTraceIDAwareLoggerMiddleware(next, logger, &stackdriverPropagation.HTTPFormat{})
 	}
 }
 
