@@ -5,6 +5,16 @@ import (
 	"net/http"
 )
 
+type emptyBody struct{}
+
+// EmptyBody can be returned by a JSONHandlerProcessor to signal the JSON handler
+// that the response body should be empty.
+//
+// This must be used and not `nil` to avoid the JSON handler to write a `null` value.
+func EmptyBody() interface{} {
+	return emptyBody{}
+}
+
 type JSONHandlerProcessor = func(r *http.Request) (out interface{}, err error)
 
 // JSONHandler wraps a simpler `func(r *http.Request) (out interface{}, err error)`
@@ -15,11 +25,22 @@ type JSONHandlerProcessor = func(r *http.Request) (out interface{}, err error)
 //
 // If the processor returns an error insteand, the `err`
 // value is written to the user using `dhttp.WriteError` call.
+//
+// To have nothing returns as the body of the response, you can do:
+//
+//	return derr.EmptyBody(), nil
+//
+// Which will return a 200 OK with an empty body.
 func JSONHandler(processor JSONHandlerProcessor) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		out, err := processor(r)
 		if err != nil {
 			WriteError(r.Context(), w, err)
+			return
+		}
+
+		if _, ok := out.(emptyBody); ok {
+			w.WriteHeader(http.StatusOK)
 			return
 		}
 
