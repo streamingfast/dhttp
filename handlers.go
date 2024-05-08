@@ -53,3 +53,20 @@ func RawHandler(processor RawHandlerProcessor) http.Handler {
 		WriteFromReader(r.Context(), w, out)
 	})
 }
+
+type DirectHandlerProcessor = func(w http.ResponseWriter, r *http.Request) (err error)
+
+// DirectHandler wraps a simpler `func(w http.ResponseWriter, r *http.Request) (err error)`
+// processor.
+//
+// This handler gives you full control over the response writer but with the added
+// benefinit of having the error handling done for you.
+func DirectHandler(processor DirectHandlerProcessor) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		err := processor(w, r)
+		if err != nil {
+			WriteError(r.Context(), w, err)
+			return
+		}
+	})
+}
