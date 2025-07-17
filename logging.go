@@ -29,8 +29,6 @@ var zlog, _ = logging.PackageLogger("dhttp", "github.com/streamingfast/dhttp")
 // If debug is enabled, a one-line Response log containing HTTP status and body length is logged,
 // and if tracing is enabled, the full request is dumped to the logger, in a multi-line
 // log.
-//
-
 func NewLoggingRoundTripper(logger *zap.Logger, tracer logging.Tracer, next http.RoundTripper) *LoggingRoundTripper {
 	if next == nil {
 		next = http.DefaultTransport
