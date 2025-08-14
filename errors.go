@@ -71,7 +71,7 @@ func convertStatusToErrorResponse(ctx context.Context, st *status.Status) *Error
 // Client Errors
 
 func InvalidJSONError(ctx context.Context, err error) *ErrorResponse {
-	return BadRequestError(ctx, err, "invalid_json_error", "The request is not a valid json.", "errors", map[string]interface{}{
+	return BadRequestError(ctx, err, "invalid_json_error", "The request is not a valid json.", "errors", map[string]any{
 		"source": err.Error(),
 	})
 }
@@ -244,10 +244,10 @@ func (e *ErrorResponse) Error() string {
 	return fmt.Sprintf("[%s] %d: %s%s%s", e.Code, e.Status, e.Message, causeString, detailsString)
 }
 
-type errorClass func(ctx context.Context, cause error, code string, message interface{}, keyvals ...interface{}) *ErrorResponse
+type errorClass func(ctx context.Context, cause error, code string, message any, keyvals ...any) *ErrorResponse
 
 func newErrorClass(status int) errorClass {
-	return func(ctx context.Context, cause error, code string, message interface{}, keyvals ...interface{}) *ErrorResponse {
+	return func(ctx context.Context, cause error, code string, message any, keyvals ...any) *ErrorResponse {
 		var msg string
 		switch actual := message.(type) {
 		case string:
@@ -260,15 +260,15 @@ func newErrorClass(status int) errorClass {
 			msg = fmt.Sprintf("%v", actual)
 		}
 
-		var details map[string]interface{}
+		var details map[string]any
 		l := len(keyvals)
 		if l > 0 {
-			details = make(map[string]interface{})
+			details = make(map[string]any)
 		}
 
 		for i := 0; i < l; i += 2 {
 			k := keyvals[i]
-			var v interface{} = "MISSING"
+			var v any = "MISSING"
 			if i+1 < l {
 				v = keyvals[i+1]
 			}

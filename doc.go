@@ -50,7 +50,16 @@
 //	return dhttp.NotFoundError(ctx, nil, "user_not_found", "User not found")
 //	return dhttp.InternalServerError(ctx, err, "database_error", "Database connection failed")
 //
-// All error responses include trace IDs for debugging and follow a consistent JSON structure.
+// The package provides pre-made error functions for all standard HTTP status codes:
+//
+//	return dhttp.UnauthorizedError(ctx, nil, "auth_required", "Authentication required")
+//	return dhttp.ForbiddenError(ctx, nil, "access_denied", "Access denied")
+//	return dhttp.TooManyRequestsError(ctx, nil, "rate_limit", "Rate limit exceeded")
+//
+// See errors.go for the complete list of available HTTP error functions (4xx and 5xx).
+//
+// All HTTP errors are wrapped and can be easily used throughout your application.
+// Error responses include trace IDs for debugging and follow a consistent JSON structure.
 //
 // # Utilities
 //

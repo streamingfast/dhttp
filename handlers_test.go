@@ -28,7 +28,7 @@ func TestJSONHandler(t *testing.T) {
 		{
 			"empty body",
 			args{
-				processor: func(r *http.Request) (out interface{}, err error) {
+				processor: func(r *http.Request) (out any, err error) {
 					return EmptyBody(), nil
 				},
 			},
@@ -40,7 +40,7 @@ func TestJSONHandler(t *testing.T) {
 		{
 			"body",
 			args{
-				processor: func(r *http.Request) (out interface{}, err error) {
+				processor: func(r *http.Request) (out any, err error) {
 					return map[string]string{"key": "value"}, nil
 				},
 			},

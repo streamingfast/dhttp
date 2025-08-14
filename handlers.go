@@ -11,13 +11,13 @@ type emptyBody struct{}
 // that the response body should be empty.
 //
 // This must be used and not `nil` to avoid the JSON handler to write a `null` value.
-func EmptyBody() interface{} {
+func EmptyBody() any {
 	return emptyBody{}
 }
 
-type JSONHandlerProcessor = func(r *http.Request) (out interface{}, err error)
+type JSONHandlerProcessor = func(r *http.Request) (out any, err error)
 
-// JSONHandler wraps a simpler `func(r *http.Request) (out interface{}, err error)`
+// JSONHandler wraps a simpler `func(r *http.Request) (out any, err error)`
 // processor.
 //
 // If the processor returns something as the `out` value, the `out`

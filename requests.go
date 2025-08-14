@@ -21,7 +21,7 @@ func init() {
 	decoder.RegisterConverter(time.Duration(0), stringToTimeDuration)
 }
 
-func ExtractRequest(ctx context.Context, r *http.Request, request interface{}, validator Validator) error {
+func ExtractRequest(ctx context.Context, r *http.Request, request any, validator Validator) error {
 	err := decoder.Decode(request, requestToSchemaDecodingMap(r))
 	if err != nil {
 		return sanitizeSchemaError(ctx, err)
@@ -35,7 +35,7 @@ func ExtractRequest(ctx context.Context, r *http.Request, request interface{}, v
 	return nil
 }
 
-func ExtractJSONRequest(ctx context.Context, r *http.Request, request interface{}, validator Validator) error {
+func ExtractJSONRequest(ctx context.Context, r *http.Request, request any, validator Validator) error {
 	if r.Body == nil {
 		return MissingBodyError(ctx)
 	}

@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/streamingfast/dhttp/middleware"
 	"net/http"
 	"time"
+
+	"github.com/streamingfast/dhttp/middleware"
 
 	"github.com/gorilla/mux"
 	"github.com/streamingfast/derr"
@@ -66,7 +67,7 @@ type HealthResponse struct {
 	Healthy bool `json:"healthy"`
 }
 
-func getHealth(r *http.Request) (out interface{}, err error) {
+func getHealth(r *http.Request) (out any, err error) {
 	return HealthResponse{Healthy: true}, nil
 }
 
@@ -80,7 +81,7 @@ type GetTodosResponse struct {
 	IDs []string `json:"ids"`
 }
 
-func getTodos(r *http.Request) (out interface{}, err error) {
+func getTodos(r *http.Request) (out any, err error) {
 	ctx := r.Context()
 	request := GetTodosParams{}
 	err = dhttp.ExtractRequest(ctx, r, &request, dhttp.NewRequestValidator(validator.Rules{
@@ -105,7 +106,7 @@ type TodosResponse struct {
 	IDs []string `json:"ids"`
 }
 
-func putTodo(r *http.Request) (out interface{}, err error) {
+func putTodo(r *http.Request) (out any, err error) {
 	ctx := r.Context()
 	logger := logging.Logger(ctx, zlog)
 

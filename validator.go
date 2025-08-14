@@ -8,12 +8,12 @@ import (
 )
 
 type Validator interface {
-	validate(r *http.Request, data interface{}) url.Values
+	validate(r *http.Request, data any) url.Values
 }
 
 type NoOpValidator struct{}
 
-func (v *NoOpValidator) validate(r *http.Request, data interface{}) url.Values {
+func (v *NoOpValidator) validate(r *http.Request, data any) url.Values {
 	return nil
 }
 
@@ -38,6 +38,6 @@ func NewJSONRequestValidator(rules validator.Rules, options ...validator.Option)
 	}
 }
 
-func (v *RequestValidator) validate(r *http.Request, data interface{}) url.Values {
+func (v *RequestValidator) validate(r *http.Request, data any) url.Values {
 	return validator.ValidateStruct(data, v.rules, v.options...)
 }
