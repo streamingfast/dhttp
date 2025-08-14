@@ -6,7 +6,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/streamingfast/derr"
 	"github.com/streamingfast/validator"
 	"github.com/stretchr/testify/assert"
 )
@@ -27,7 +26,7 @@ func Test_ExtractRequest(t *testing.T) {
 		"count":  []string{"min:4"},
 	}))
 
-	assert.Equal(t, derr.RequestValidationError(ctx, url.Values{
+	assert.Equal(t, RequestValidationError(ctx, url.Values{
 		"count": []string{"The count field value can not be less than 4"},
 	}), err)
 
@@ -51,7 +50,7 @@ func Test_ExtractRequest_CustomTag(t *testing.T) {
 		"prefix": []string{"required"},
 	}, validator.TagIdentifierOption("json")))
 
-	assert.Equal(t, derr.RequestValidationError(ctx, url.Values{
+	assert.Equal(t, RequestValidationError(ctx, url.Values{
 		"prefix": []string{"The prefix field is required"},
 	}), err)
 
@@ -76,7 +75,7 @@ func Test_ExtractJSONRequest(t *testing.T) {
 		"count":  []string{"min:4"},
 	}))
 
-	assert.Equal(t, derr.RequestValidationError(ctx, url.Values{
+	assert.Equal(t, RequestValidationError(ctx, url.Values{
 		"count": []string{"The count field value can not be less than 4"},
 	}), err)
 

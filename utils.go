@@ -2,12 +2,11 @@ package dhttp
 
 import (
 	"context"
-	"io/ioutil"
+	"fmt"
+	"io"
 	"net/http"
 	"regexp"
 	"strings"
-
-	"github.com/streamingfast/derr"
 )
 
 var portSuffixRegex = regexp.MustCompile(`:[0-9]{2,5}$`)
@@ -45,18 +44,21 @@ func RealIP(r *http.Request) string {
 	return ""
 }
 
-func FowardResponse(ctx context.Context, w http.ResponseWriter, response *http.Response) {
-	// FIXME: Implement using a Pipe stream insteading of reading the full content in memory
-	content, err := ioutil.ReadAll(response.Body)
+// Deprecated: Use [ForwardResponse] instead.
+var FowardResponse = ForwardResponse
+
+func ForwardResponse(ctx context.Context, w http.ResponseWriter, response *http.Response) {
+	// FIXME: Implement using a Pipe stream instead of reading the full content in memory
+	content, err := io.ReadAll(response.Body)
 	defer response.Body.Close()
 
 	if err != nil {
-		WriteError(ctx, w, derr.Wrap(err, "unable to read response body while forwarding response"))
+		WriteError(ctx, w, fmt.Errorf("unable to read response body while forwarding response: %w", err))
 	}
 
 	w.WriteHeader(response.StatusCode)
 	_, err = w.Write(content)
 	if err != nil {
-		logWriteResponseError(ctx, "failed forwarding response", err)
+		logWriteResponseErrorCtx(ctx, "failed forwarding response", err)
 	}
 }

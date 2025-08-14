@@ -28,7 +28,7 @@ type JSONHandlerProcessor = func(r *http.Request) (out interface{}, err error)
 //
 // To have nothing returns as the body of the response, you can do:
 //
-//	return derr.EmptyBody(), nil
+//	return dhttp.EmptyBody(), nil
 //
 // Which will return a 200 OK with an empty body.
 func JSONHandler(processor JSONHandlerProcessor) http.Handler {

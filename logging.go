@@ -13,8 +13,6 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var zlog, _ = logging.PackageLogger("dhttp", "github.com/streamingfast/dhttp")
-
 // NewLoggingRoundTripper create a wrapping `http.RoundTripper` aware object that intercepts
 // the request as well as the response and logs them to the specified logger according to
 // some rules if the debug and tracing level are enabled or not.

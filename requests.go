@@ -11,7 +11,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/schema"
-	"github.com/streamingfast/derr"
 	"github.com/streamingfast/logging"
 	"go.uber.org/zap"
 )
@@ -30,7 +29,7 @@ func ExtractRequest(ctx context.Context, r *http.Request, request interface{}, v
 
 	requestErrors := validator.validate(r, request)
 	if len(requestErrors) > 0 {
-		return derr.RequestValidationError(ctx, requestErrors)
+		return RequestValidationError(ctx, requestErrors)
 	}
 
 	return nil
@@ -38,17 +37,17 @@ func ExtractRequest(ctx context.Context, r *http.Request, request interface{}, v
 
 func ExtractJSONRequest(ctx context.Context, r *http.Request, request interface{}, validator Validator) error {
 	if r.Body == nil {
-		return derr.MissingBodyError(ctx)
+		return MissingBodyError(ctx)
 	}
 
 	err := json.NewDecoder(r.Body).Decode(request)
 	if err != nil {
-		return derr.InvalidJSONError(ctx, err)
+		return InvalidJSONError(ctx, err)
 	}
 
 	requestErrors := validator.validate(r, request)
 	if len(requestErrors) > 0 {
-		return derr.RequestValidationError(ctx, requestErrors)
+		return RequestValidationError(ctx, requestErrors)
 	}
 
 	return nil
@@ -79,7 +78,7 @@ func sanitizeSchemaError(ctx context.Context, err error) error {
 		errors["_global"] = []string{err.Error()}
 	}
 
-	return derr.RequestValidationError(ctx, errors)
+	return RequestValidationError(ctx, errors)
 }
 
 func schemaErrorToString(zlogger *zap.Logger, err error) string {

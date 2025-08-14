@@ -1,0 +1,4 @@
+global:
+  binary: dhttp
+  language: golang
+  variant: library
