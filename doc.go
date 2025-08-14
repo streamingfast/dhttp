@@ -14,7 +14,7 @@
 //
 // Example using JSONHandler:
 //
-//	http.Handle("/api/users", dhttp.JSONHandler(func(r *http.Request) (interface{}, error) {
+//	http.Handle("/api/users", dhttp.JSONHandler(func(r *http.Request) (any, error) {
 //		// Your logic here
 //		return users, nil
 //	}))
