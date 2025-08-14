@@ -1,38 +1,32 @@
-## dfuse HTTP Library
+# dhttp - StreamingFast HTTP Library
 
-This repository contains all common stuff around HTTP handling across our
-various services.
+Go HTTP utilities for microservices with integrated logging, tracing, and error handling used in StreamingFast products.
 
-### Philosophy
+## Key Features
 
-The package contains wide adoption common method re-used over and over again
-across our micro-services. The methods are around the following subjects:
+- **Request handling**: Extract and validate URL parameters, query strings, and JSON payloads
+- **Response writing**: JSON, text, HTML, and raw responses with proper headers and error logging
+- **Error handling**: Structured HTTP error responses with tracing support
+- **Handler wrappers**: Simplified handler patterns for common use cases
+- **Utilities**: Real IP detection, response forwarding
 
-- Utilities
-- Middlewares
-- Requests
-- Responses
+## Core APIs
 
-They usually perform the most standard operation handling everything related
-to logging, tracing and error handling.
+### Handlers
+- [`JSONHandler`](https://pkg.go.dev/github.com/streamingfast/dhttp#JSONHandler) - Wrap functions that return JSON responses
+- [`RawHandler`](https://pkg.go.dev/github.com/streamingfast/dhttp#RawHandler) - Stream raw content from io.ReadCloser
+- [`DirectHandler`](https://pkg.go.dev/github.com/streamingfast/dhttp#DirectHandler) - Direct response writer control with error handling
 
-### Reference
+### Request Processing
+- [`ExtractRequest`](https://pkg.go.dev/github.com/streamingfast/dhttp#ExtractRequest) - Extract URL/query parameters into structs
+- [`ExtractJSONRequest`](https://pkg.go.dev/github.com/streamingfast/dhttp#ExtractJSONRequest) - Parse and validate JSON request bodies
 
-- [WriteJSON](#writejson)
+### Response Writing
+- [`WriteJSON`](https://pkg.go.dev/github.com/streamingfast/dhttp#WriteJSON) - Write JSON responses
+- [`WriteError`](https://pkg.go.dev/github.com/streamingfast/dhttp#WriteError) - Write structured error responses
+- [`WriteText`](https://pkg.go.dev/github.com/streamingfast/dhttp#WriteText), [`WriteHTML`](https://pkg.go.dev/github.com/streamingfast/dhttp#WriteHTML) - Write text/HTML responses
 
-#### Utilities
+### Error Types
+- HTTP status error constructors: [`BadRequestError`](https://pkg.go.dev/github.com/streamingfast/dhttp#BadRequestError), [`NotFoundError`](https://pkg.go.dev/github.com/streamingfast/dhttp#NotFoundError), [`InternalServerError`](https://pkg.go.dev/github.com/streamingfast/dhttp#InternalServerError), etc.
 
-#### Requests
-
-##### `ExtractRequest`
-
-##### `ExtractJSONRequest`
-
-#### Responses
-
-##### `WriteError`
-
-##### `WriteJSON`
-
-Writes a struct as a JSON body for a particular handler correctly handling logging
-of errors and correctly sets all headers
+See [full documentation](https://pkg.go.dev/github.com/streamingfast/dhttp) for complete API reference.
