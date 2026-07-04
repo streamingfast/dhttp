@@ -6,7 +6,7 @@ require (
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator v0.39.0
 	github.com/gorilla/handlers v0.0.0-20181012153334-350d97a79266
 	github.com/gorilla/mux v1.8.0
-	github.com/gorilla/schema v1.0.2
+	github.com/gorilla/schema v1.4.1
 	github.com/iancoleman/strcase v0.2.0
 	github.com/pkg/errors v0.9.1
 	github.com/streamingfast/derr v0.0.0-20220301163149-de09cb18fc70
