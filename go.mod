@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator v0.39.0
-	github.com/gorilla/handlers v0.0.0-20181012153334-350d97a79266
+	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/schema v1.0.2
 	github.com/iancoleman/strcase v0.2.0
